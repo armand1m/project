@@ -1,7 +1,8 @@
-const loki = require('lokijs');
-const storage = new loki('./data/loki.json', {
-  autosave: true,
-  autoload: true
-});
+const Datastore = require('nedb')
 
-module.exports = storage;
+var Storage = {};
+
+Storage.projects = new Datastore({ filename: './data/projects.db', autoload: true });
+Storage.tasks = new Datastore({ filename: './data/tasks.db', autoload: true });
+
+module.exports = Storage;

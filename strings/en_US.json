@@ -1,0 +1,21 @@
+{
+  "commands": {
+    "open": "Open a project.",
+    "ls": "List existing projects.",
+    "create": "Create a new project.",
+    "add-task": "Add a task on current project.",
+    "current": "Shows current project."
+  },
+  "errors": {
+  },
+  "warnings": {
+    "NO_PROJECTS_CREATED": "You don't have projects created. See 'create'.",
+    "NO_PROJECT_OPENED": "You don't have opened any project. See 'open'."
+  },
+  "informational": {
+    "CHOOSE_A_PROJECT": "Choose a project: "
+  },
+  "success": {
+    "PROJECT_CREATED": "Project created successfully. See 'add-task' to start working."
+  }
+}

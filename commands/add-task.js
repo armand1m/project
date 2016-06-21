@@ -4,7 +4,7 @@ const Strings = require("../strings");
 
 const command = function(args, callback) {
   if (!process.env.CURRENT_PROJECT) {
-    console.error(Strings.warnings.OPEN_PROJECT_TO_ADD_TASK);
+    console.error(Strings.warnings.NO_PROJECT_OPENED);
     callback();
     return;
   }

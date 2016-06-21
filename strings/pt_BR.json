@@ -1,0 +1,21 @@
+{
+  "commands": {
+    "open": "Abre um projeto.",
+    "ls": "Lista projetos existentes.",
+    "create": "Cria um novo projeto.",
+    "add-task": "Adiciona uma tarefa ao projeto aberto.",
+    "current": "Mostra o projeto aberto."
+  },
+  "errors": {
+  },
+  "warnings": {
+    "NO_PROJECTS_CREATED": "Você não tem projetos criados. Veja o comando 'create'.",
+    "NO_PROJECT_OPENED": "Você não está com nenhum projeto aberto. Veja o comando 'open'."
+  },
+  "informational": {
+    "CHOOSE_A_PROJECT": "Escolha um projeto: "
+  },
+  "success": {
+    "PROJECT_CREATED": "Projeto criado com sucesso. Veja o comando 'add-task' para começar a trabalhar."
+  }
+}
