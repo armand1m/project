@@ -4,11 +4,12 @@ const Project = require("../models/Project");
 const Strings = require("../strings");
 
 const command = function(args, callback) {
-  new Project(args.name)
+  new Project({
+    name: args.name
+  })
   .save()
   .then(project => {
     this.log(Strings.success.PROJECT_CREATED);
-
     callback();
   });
 };

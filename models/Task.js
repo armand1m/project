@@ -1,61 +1,37 @@
 'use strict';
 
 const Storage = require("../storage")
+const Model = require("./Model")(Storage.tasks);
 
-module.exports = class Task {
+module.exports = class Task extends Model {
   constructor(object) {
-    this._id = object._id || null;
-    this.projectId = object.projectId || null;
-    this.name = object.name || null;
-    this.duration = object.duration || 0;
-    this.tasks = object.tasks || [];
+    super(object);
   }
 
-  set tasks(tasks) { return; }
-
-  add(task) {
-    this.tasks.push(new Task(task));
-
-    return this;
+  get definition() {
+    return {
+      projectId: 0,
+      name: null,
+      duration: 0,
+      tasks: []
+    };
   }
 
-  save() {
-    return new Promise((resolve, reject) => {
-      Storage.tasks.insert(this, (err, task) => {
-        if (err) reject(err);
+  set name(name) { this.instance.name = name; }
+  set projectId(projectId) { this.instance.projectId = projectId; }
+  set duration(duration) { this.instance.duration = duration; }
 
-        resolve(new Task());
-      });
-    });
+  get _id() { return this.instance._id; }
+  get name() { return this.instance.name; }
+  get projectId() { return this.instance.projectId; }
+  get duration() { return this.instance.duration; }
+  get tasks() { return this.instance.tasks; }
+
+  addTask(task) {
+    this.instance.tasks.push(task);
   }
 
-  static all() {
-    return new Promise((resolve, reject) => {
-      Storage.tasks.find({}, (err, tasks) => {
-        if (err) reject(err);
-
-        resolve(tasks.map(task => new Task(task)));
-      });
-    });
-  }
-
-  static findByName(name) {
-    return new Promise((resolve, reject) => {
-      Storage.tasks.find({ name }, function(err, task) {
-        if (err) reject(err)
-
-        resolve(new Task(task));
-      });
-    });
-  }
-
-  static findByProjectId(projectId) {
-    return new Promise((resolve, reject) => {
-      Storage.tasks.find({ projectId }, function(err, task) {
-        if (err) reject(err)
-
-        resolve(new Task(task));
-      });
-    });
+  toString() {
+    return `_id: ${this._id} - ${this.name}`;
   }
 };

@@ -1,45 +1,38 @@
 'use strict';
 
 const Storage = require("../storage")
+const Task = require("./Task");
+const Model = require("./Model")(Storage.projects);
 
-module.exports = class Project {
+module.exports = class Project extends Model {
   constructor(object) {
-    this._id = object._id || null;
-    this.name = object.name || null;
-    this.tasks = object.tasks || [];
+    super(object);
   }
 
-  save() {
-    return new Promise((resolve, reject) => {
-      Storage.projects.insert(this, (err, project) => {
-        if (err) reject(err);
-
-        resolve(new Project(project));
-      });
-    });
+  get definition() {
+    return {
+      tasks: []
+    };
   }
 
-  static all() {
-    return new Promise((resolve, reject) => {
-      Storage.projects.find({}, (err, projects) => {
-        if (err) reject(err);
+  get _id() { return this.instance._id; }
+  get name() { return this.instance.name; }
+  get tasks() { return this.instance.tasks; }
+  
+  set name(name) { this.instance.name = name; }
+  
+  addTask(task) {
+    if (!task instanceof Task)
+      throw new Error("Only Task Objects are allowed as Project tasks.");
 
-        resolve(projects.map(project => new Project(project)));
-      });
-    });
-  }
-
-  static findByName(name) {
-    return new Promise((resolve, reject) => {
-      Storage.projects.find({ name }, function(err, project) {
-        if (err) reject(err)
-
-        resolve(new Project(project));
-      });
-    });
+    this.instance.tasks.push(task);
   }
 
   toString() {
     return `_id: ${this._id} - ${this.name}`;
+  }
+
+  static findByName(name) {
+    return Project.find({ name });
   }
 };
