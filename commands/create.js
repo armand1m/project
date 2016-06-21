@@ -1,24 +1,22 @@
 'use strict';
 
 const Project = require("../models/Project");
-const Strings = require("../strings");
+const Command = require("./command");
 
-const command = function(args, callback) {
-  new Project({
-    name: args.name
-  })
-  .save()
-  .then(project => {
-    this.log(Strings.success.PROJECT_CREATED);
-    callback();
-  });
-};
+class CreateCommand extends Command {
+  get name() { return "create" }
+  get params() { return "[name]" }
 
-module.exports = {
-  command,
-  register(vorpal) {
-    vorpal
-    .command('create [name]', Strings.commands.create)
-    .action(command);
+  command(args, callback) {
+    new Project({
+      name: args.name
+    })
+    .save()
+    .then(project => {
+      this.log(super.strings.success.PROJECT_CREATED);
+      callback();
+    });
   }
-};
+}
+
+module.exports = CreateCommand;

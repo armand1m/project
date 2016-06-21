@@ -1,22 +1,19 @@
 'use strict';
 
-const Strings = require("../strings");
+const Command = require("./command");
 
-const command = function(args, callback) {
-  if (!process.env.CURRENT_PROJECT) {
-    console.error(Strings.warnings.NO_PROJECT_OPENED);
+class AddTaskCommand extends Command {
+  get name() { return "add-task" }
+
+  command(args, callback) {
+    if (!process.env.CURRENT_PROJECT) {
+      console.error(super.strings.warnings.NO_PROJECT_OPENED);
+      callback();
+      return;
+    }
+
     callback();
-    return;
   }
+}
 
-  callback();
-};
-
-module.exports = {
-  command: command,
-  register(vorpal) {
-    vorpal
-    .command('add-task', Strings.commands["add-task"])
-    .action(command);
-  }
-};
+module.exports = AddTaskCommand;

@@ -2,8 +2,9 @@
 
 const vorpal = require('vorpal')();
 
-require('./commands')(vorpal);
+require('./commands')(vorpal).then(() => {
+  vorpal
+  .delimiter(`project $`)
+  .show();
+}).catch(console.error);
 
-vorpal
-.delimiter(`project $`)
-.show();

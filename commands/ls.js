@@ -1,30 +1,25 @@
 'use strict';
 
-const Project = require("../models/Project")
-const Strings = require("../strings");
+const Project = require("../models/Project");
+const Command = require("./command");
 
-const fn = projects => {
-  return projects.length ?
-         projects.map(project => project.toString()).join(",\n") :
-         Strings.warnings.NO_PROJECTS_CREATED;
-};
+class ListCommand extends Command {
+  get name() { return "ls" }
 
-const command = function(args, callback) {
-  Project
-  .all()
-  .then(projects => {
-    this.log(fn(projects));
+  command(args, callback) {
+    Project
+    .all()
+    .then(projects => {
+      var result = 
+        projects.length ?
+        projects.map(project => project.toString()).join(",\n") :
+        super.strings.warnings.NO_PROJECTS_CREATED;
 
-    callback();
-  });
-};
+      this.log(result);
 
-module.exports = {
-  fn,
-  command,
-  register(vorpal) {
-    vorpal
-    .command('ls', Strings.commands.ls)
-    .action(command);
+      callback();
+    });
   }
-};
+}
+
+module.exports = ListCommand;
