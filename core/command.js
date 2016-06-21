@@ -7,7 +7,7 @@ class Command {
   get params() { return "" }
   get strings() { return Strings }
 
-  get description() { 
+  get description() {
     if (!(this.name in this.strings.commands)) {
       throw new Error(`${this.strings.errors.COMMAND_WITHOUT_DESCRIPTION} ${this.name}`);
     }
@@ -20,7 +20,7 @@ class Command {
   }
 
   register(vorpal) {
-    vorpal
+    return vorpal
     .command(`${this.name} ${this.params}`, this.description)
     .action(this.command);
   }

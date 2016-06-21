@@ -1,7 +1,7 @@
 'use strict';
 
 const Project = require("../models/Project");
-const Command = require("./command");
+const Command = require("../core/command");
 
 class ListCommand extends Command {
   get name() { return "ls" }
@@ -10,7 +10,7 @@ class ListCommand extends Command {
     Project
     .all()
     .then(projects => {
-      var result = 
+      var result =
         projects.length ?
         projects.map(project => project.toString()).join(",\n") :
         super.strings.warnings.NO_PROJECTS_CREATED;

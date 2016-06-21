@@ -1,7 +1,7 @@
 'use strict';
 
 const Project = require("../models/Project");
-const Command = require("./command");
+const Command = require("../core/command");
 
 class OpenCommand extends Command {
   get name() { return "open" }
@@ -28,7 +28,7 @@ class OpenCommand extends Command {
       .then(answers => {
         process.env.CURRENT_PROJECT = answers[opts.name];
         this.delimiter(`${process.env.CURRENT_PROJECT} $`);
-        
+
         callback();
       });
     })

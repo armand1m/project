@@ -2,6 +2,7 @@
   "commands": {
     "open": "Open a project.",
     "ls": "List existing projects.",
+    "rm": "Removes a project.",
     "create": "Create a new project.",
     "add-task": "Add a task on current project.",
     "current": "Shows current project."

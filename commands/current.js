@@ -1,10 +1,10 @@
 'use strict';
 
-const Command = require("./command");
+const Command = require("../core/command");
 
 class CurrentCommand extends Command {
   get name() { return "current" }
-  
+
   command(args, callback) {
     this.log(process.env.CURRENT_PROJECT ? process.env.CURRENT_PROJECT : super.strings.warnings.NO_PROJECT_OPENED);
     callback();

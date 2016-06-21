@@ -1,7 +1,7 @@
 'use strict';
 
 const Project = require("../models/Project");
-const Command = require("./command");
+const Command = require("../core/command");
 
 class CreateCommand extends Command {
   get name() { return "create" }

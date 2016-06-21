@@ -1,6 +1,6 @@
 'use strict';
 
-const Command = require("./command");
+const Command = require("../core/command");
 
 class AddTaskCommand extends Command {
   get name() { return "add-task" }
