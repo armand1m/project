@@ -2,7 +2,7 @@
 
 const Strings = require("../strings");
 
-module.exports = class Command {
+class Command {
   get name() { return "command" }
   get params() { return "" }
   get strings() { return Strings }
@@ -24,4 +24,6 @@ module.exports = class Command {
     .command(`${this.name} ${this.params}`, this.description)
     .action(this.command);
   }
-};
+}
+
+module.exports = Command;
