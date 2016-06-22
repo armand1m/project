@@ -13,8 +13,7 @@ module.exports = class Task extends Model {
       projectId: 0,
       parentTaskId: 0,
       name: null,
-      duration: 0,
-      tasks: []
+      duration: 0
     };
   }
 
@@ -28,10 +27,6 @@ module.exports = class Task extends Model {
   get parentTaskId() { return this.instance.parentTaskId; }
   get duration() { return this.instance.duration; }
   get tasks() { return this.instance.tasks; }
-
-  addTask(task) {
-    this.instance.tasks.push(task);
-  }
 
   toString() {
     return `_id: ${this._id} - ${this.name}`;

@@ -5,6 +5,9 @@
     "rm": "Removes a project.",
     "create": "Create a new project.",
     "task add": "Add a task on current project.",
+    "task rm": "Add a task on current project.",
+    "task ls": "List existing tasks on current project.",
+    "subtask add": "Add a task as a child of one or more tasks.",
     "current": "Shows current project."
   },
   "errors": {
@@ -17,7 +20,8 @@
   "informational": {
     "CHOOSE_A_PROJECT": "Choose a project: ",
     "TASK_NAME": "Task name: ",
-    "HAS_PARENT_TASK": "Has parent task?"
+    "HAS_PARENT_TASK": "Has parent task?",
+    "SELECT_THE_PARENT_TASK": "Select the parent task: "
   },
   "success": {
     "PROJECT_CREATED": "Project created successfully. See 'task add' to start working."

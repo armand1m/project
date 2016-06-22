@@ -10,6 +10,8 @@ class OpenCommand extends Command {
     Project
     .all()
     .then(projects => {
+      console.log(projects);
+
       if (!projects.length) {
         console.warn(super.strings.warnings.NO_PROJECTS_CREATED);
         callback();
@@ -26,7 +28,12 @@ class OpenCommand extends Command {
       this
       .prompt(opts)
       .then(answers => {
-        process.env.CURRENT_PROJECT = answers[opts.name];
+        var selected =
+          projects.filter(project => project.name == answers[opts.name])[0];
+
+        process.env.CURRENT_PROJECT_ID = selected._id;
+        process.env.CURRENT_PROJECT = selected.name;
+
         this.delimiter(`${process.env.CURRENT_PROJECT} $`);
 
         callback();

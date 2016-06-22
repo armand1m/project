@@ -1,20 +1,20 @@
 'use strict';
 
-function resolveResult(resolve, reject, err, result) {
-  if (err) reject(err);
-
-  if (result instanceof Array) {
-    resolve(result.map(result => new this(result)));
-  } else {
-    resolve(new this(result));
-  }
-};
-
 module.exports = function(Storage) {
   if (!Storage)
     throw new Error("A model needs a Storage.");
 
-  return class Model {
+  function resolveResult(resolve, reject, err, result) {
+    if (err) reject(err);
+
+    if (result instanceof Array) {
+      resolve(result.map(result => new this(result)));
+    } else {
+      resolve(new this(result));
+    }
+  }
+
+  class Model {
     constructor(object) {
       this.instance = Object.assign(this.definition, object);
     }
@@ -41,4 +41,6 @@ module.exports = function(Storage) {
       return new Promise((resolve, reject) => Storage.find(object, resolveResult.bind(this, resolve, reject)));
     }
   }
-}
+
+  return Model;
+};
