@@ -1,38 +1,32 @@
 const fs = require('fs');
 const path = require('path');
-const chalk = require('chalk');
+const Vorpal = require('vorpal');
+const chalk = Vorpal().chalk;
+const plus = chalk.green("+");
+const Command = require('../core/Command');
 
 module.exports = function(vorpal) {
-  function registerCmd(Command) {
-    var command = new Command();
-    command.register(vorpal);
-
-    console.log(`${chalk.green("+")} command: ${command.name}`);
-  }
-
   return new Promise((resolve, reject) => {
-    fs
-    .readdir(__dirname, (err, files) => {
+    fs.readdir(__dirname, (err, files) => {
       try {
-        if (err) 
+        if (err)
           throw err;
-        
+
         console.log("Loading commands..");
         console.time("Loading commands took");
-        
-        var commands = 
-          files
-          .filter(file => !(file == "index.js" || file == "command.js") && file.slice(-3) === '.js')
-          .map(file => require(path.join(__dirname, file)));
 
-        commands.forEach(registerCmd); 
+        files
+        .filter(file => file !== "index.js" && file.endsWith('.js'))
+        .map(file => require(path.join(__dirname, file)))
+        .filter(cmd => cmd.prototype instanceof Command)
+        .forEach(cmd => console.log(`${plus} command: ${new cmd().register(vorpal).name}`));
 
         console.timeEnd("Loading commands took");
 
         resolve();
       } catch (err) {
         reject(err);
-      } 
+      }
     });
   });
 };

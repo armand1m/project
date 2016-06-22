@@ -9,4 +9,3 @@ require('./commands')(vorpal)
   .show();
 })
 .catch(console.error);
-

@@ -5,6 +5,7 @@ const Strings = require("../strings");
 class Command {
   get name() { return "command" }
   get params() { return "" }
+  get options() { return [] }
   get strings() { return Strings }
 
   get description() {
@@ -15,14 +16,21 @@ class Command {
     return this.strings.commands[this.name];
   }
 
-  command(args, callback) {
+  action(args, callback) {
     callback();
   }
 
   register(vorpal) {
-    return vorpal
-    .command(`${this.name} ${this.params}`, this.description)
-    .action(this.command);
+    var command =
+      vorpal.command(`${this.name} ${this.params}`, this.description);
+
+    if (this.options.length) {
+      this.options.forEach(option => command.option(option.name, option.description));
+    }
+
+    command.action(this.action);
+
+    return this;
   }
 }
 

@@ -4,7 +4,7 @@
     "ls": "List existing projects.",
     "rm": "Removes a project.",
     "create": "Create a new project.",
-    "add-task": "Add a task on current project.",
+    "task add": "Add a task on current project.",
     "current": "Shows current project."
   },
   "errors": {
@@ -15,9 +15,11 @@
     "NO_PROJECT_OPENED": "You don't have opened any project. See 'open'."
   },
   "informational": {
-    "CHOOSE_A_PROJECT": "Choose a project: "
+    "CHOOSE_A_PROJECT": "Choose a project: ",
+    "TASK_NAME": "Task name: ",
+    "HAS_PARENT_TASK": "Has parent task?"
   },
   "success": {
-    "PROJECT_CREATED": "Project created successfully. See 'add-task' to start working."
+    "PROJECT_CREATED": "Project created successfully. See 'task add' to start working."
   }
 }

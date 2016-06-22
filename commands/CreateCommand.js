@@ -1,13 +1,13 @@
 'use strict';
 
 const Project = require("../models/Project");
-const Command = require("../core/command");
+const Command = require("../core/Command");
 
 class CreateCommand extends Command {
   get name() { return "create" }
-  get params() { return "[name]" }
+  get params() { return "<name>" }
 
-  command(args, callback) {
+  action(args, callback) {
     new Project({
       name: args.name
     })

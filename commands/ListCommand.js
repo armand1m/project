@@ -1,12 +1,12 @@
 'use strict';
 
 const Project = require("../models/Project");
-const Command = require("../core/command");
+const Command = require("../core/Command");
 
 class ListCommand extends Command {
   get name() { return "ls" }
 
-  command(args, callback) {
+  action(args, callback) {
     Project
     .all()
     .then(projects => {

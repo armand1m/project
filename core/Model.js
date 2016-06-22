@@ -11,7 +11,7 @@ function resolveResult(resolve, reject, err, result) {
 };
 
 module.exports = function(Storage) {
-  if (!Storage) 
+  if (!Storage)
     throw new Error("A model needs a Storage.");
 
   return class Model {
@@ -24,10 +24,10 @@ module.exports = function(Storage) {
     }
 
     save() {
-      return new Promise((resolve, reject) => Storage.insert(this.instance, (err, document) => {
+      return new Promise((resolve, reject) => Storage.insert(this.instance, (err, doc) => {
         if (err) reject(err);
 
-        this.instance = document;
+        this.instance = doc;
 
         resolve(this);
       }));

@@ -1,7 +1,7 @@
 'use strict';
 
 const Storage = require("../storage")
-const Model = require("./Model")(Storage.tasks);
+const Model = require("../core/Model")(Storage.tasks);
 
 module.exports = class Task extends Model {
   constructor(object) {
@@ -11,6 +11,7 @@ module.exports = class Task extends Model {
   get definition() {
     return {
       projectId: 0,
+      parentTaskId: 0,
       name: null,
       duration: 0,
       tasks: []
@@ -24,6 +25,7 @@ module.exports = class Task extends Model {
   get _id() { return this.instance._id; }
   get name() { return this.instance.name; }
   get projectId() { return this.instance.projectId; }
+  get parentTaskId() { return this.instance.parentTaskId; }
   get duration() { return this.instance.duration; }
   get tasks() { return this.instance.tasks; }
 
