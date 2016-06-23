@@ -12,10 +12,13 @@ class ListCommand extends Command {
     .then(projects => {
       var result =
         projects.length ?
-        projects.map(project => project.toString()).join(",\n") :
+        projects.map(Command.getPrefixed).join(",\n") :
         super.strings.warnings.NO_PROJECTS_CREATED;
 
+      this.log("\n");
+      this.log(super.strings.informational.EXISTING_PROJECTS);
       this.log(result);
+      this.log("\n");
 
       callback();
     });

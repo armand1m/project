@@ -11,19 +11,27 @@
     "current": "Shows current project."
   },
   "errors": {
-    "COMMAND_WITHOUT_DESCRIPTION": "The following command has no description:"
+    "COMMAND_WITHOUT_DESCRIPTION": "The following command has no description:",
+    "TASK_NEEDS_A_NAME": "A task needs a name."
   },
   "warnings": {
-    "NO_PROJECTS_CREATED": "You don't have projects created. See 'create'.",
-    "NO_PROJECT_OPENED": "You don't have opened any project. See 'open'."
+    "NO_PROJECTS_CREATED": "You don't have projects created.",
+    "NO_PROJECT_OPENED": "You don't have any opened project."
   },
   "informational": {
+    "SEE_OPEN_CMD": "See 'open'.",
+    "SEE_CREATE_CMD": "See 'create'.",
+    "SEE_TASK_ADD_CMD": "See 'task add'.",
     "CHOOSE_A_PROJECT": "Choose a project: ",
+    "EXISTING_PROJECTS": "Existing projects: ",
+    "EXISTING_TASKS": "Existing tasks: ",
     "TASK_NAME": "Task name: ",
     "HAS_PARENT_TASK": "Has parent task?",
-    "SELECT_THE_PARENT_TASK": "Select the parent task: "
+    "SELECT_THE_PARENT_TASK": "Select the parent task: ",
+    "SELECT_TASKS_TO_REMOVE": "Select the tasks to remove: ",
+    "TASKS_REMOVED": "Tasks removed."
   },
   "success": {
-    "PROJECT_CREATED": "Project created successfully. See 'task add' to start working."
+    "PROJECT_CREATED": "Project created successfully."
   }
 }

@@ -33,12 +33,22 @@ module.exports = function(Storage) {
       }));
     }
 
+    static remove(object, options) {
+      options = options || {};
+      
+      return new Promise((resolve, reject) => Storage.remove(object, options, resolveResult.bind(this, resolve, reject)));
+    }
+
     static all() {
       return new Promise((resolve, reject) => Storage.find({}, resolveResult.bind(this, resolve, reject)));
     }
 
     static find(object) {
       return new Promise((resolve, reject) => Storage.find(object, resolveResult.bind(this, resolve, reject)));
+    }
+
+    toString() {
+      return `_id: ${this._id} - ${this.name}`;
     }
   }
 

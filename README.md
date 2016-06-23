@@ -16,11 +16,18 @@ Project will start as a CLI tool built in Node.js using [Vorpal.js](http://vorpa
   - [x] Project Name
   - [ ] Project Start Date
   - [ ] Calculate Project due date based on tasks and its durations.
+- [ ] Delete a Project
+- [ ] Update a Project
+- [x] List all Projects
 - [x] Open a Project
 - [ ] Project Overview
+- [x] List Tasks in Current Project
+- [ ] List Tasks and Subtasks in Current Project
 - [x] Create Tasks in the Project
   - [x] Task Name
   - [ ] Task Duration
+- [x] Delete a task
+  - [ ] Delete task subtasks
 - [ ] Create Subtasks in a Task <small>*(in progress)*</small>
 - [ ] Create a Resource
   - [ ] Resource Name

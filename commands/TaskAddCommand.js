@@ -9,13 +9,7 @@ class TaskAddCommand extends Command {
   get params() { return "" }
 
   action(args, callback) {
-    var current = process.env.CURRENT_PROJECT;
-
-    if (!current) {
-      console.error(super.strings.warnings.NO_PROJECT_OPENED);
-      callback();
-      return;
-    }
+    if (Command.needsCurrentProject(callback)) return;
 
     this.prompt({
       type: 'input',

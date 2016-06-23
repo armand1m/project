@@ -10,8 +10,6 @@ class OpenCommand extends Command {
     Project
     .all()
     .then(projects => {
-      console.log(projects);
-
       if (!projects.length) {
         console.warn(super.strings.warnings.NO_PROJECTS_CREATED);
         callback();
