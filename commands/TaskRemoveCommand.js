@@ -26,7 +26,7 @@ class TaskRemoveCommand extends Command {
           .map(task => { _id: task._id });
 
         console.log(selected);
-        // 
+        //
         // Task
         // .remove(selected)
         // .then(deleteCount => {

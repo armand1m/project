@@ -18,4 +18,8 @@ module.exports = class Project extends Model {
   get name() { return this.instance.name; }
   get tasks() { return this.instance.tasks; }
   set name(name) { this.instance.name = name; }
+
+  toString() {
+    return `Project: "${this.name}"`
+  }
 };

@@ -16,7 +16,8 @@
   },
   "warnings": {
     "NO_PROJECTS_CREATED": "You don't have projects created.",
-    "NO_PROJECT_OPENED": "You don't have any opened project."
+    "NO_PROJECT_OPENED": "You don't have any opened project.",
+    "NO_TASKS_FOR_THIS_PROJECT": "You don't have any tasks in this project."
   },
   "informational": {
     "SEE_OPEN_CMD": "See 'open'.",

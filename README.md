@@ -26,7 +26,7 @@ Project will start as a CLI tool built in Node.js using [Vorpal.js](http://vorpa
 - [x] Create Tasks in the Project
   - [x] Task Name
   - [ ] Task Duration
-- [x] Delete a task
+- [ ] Delete a task
   - [ ] Delete task subtasks
 - [ ] Create Subtasks in a Task <small>*(in progress)*</small>
 - [ ] Create a Resource

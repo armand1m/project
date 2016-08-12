@@ -51,6 +51,11 @@ class Command {
     return this;
   }
 
+  write(msg) {
+    this.log(msg)
+    return this
+  }
+
   static needsCurrentProject(callback) {
     var current = process.env.CURRENT_PROJECT;
 
